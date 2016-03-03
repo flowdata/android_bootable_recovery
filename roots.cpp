@@ -278,7 +278,10 @@ int setup_install_mounts() {
         Volume* v = fstab->recs + i;
 
         if (strcmp(v->mount_point, "/tmp") == 0 ||
-            strcmp(v->mount_point, "/cache") == 0) {
+            strcmp(v->mount_point, "/cache") == 0 ||
+            strcmp(v->mount_point, "/system") == 0 ||
+            strcmp(v->mount_point, "/debian") == 0 ||
+            strcmp(v->mount_point, "/boot") == 0) {
             if (ensure_path_mounted(v->mount_point) != 0) return -1;
 
         } else {
